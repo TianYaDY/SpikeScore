@@ -1,0 +1,25 @@
+{
+  "model_path": "./models/xxx",
+  "dataset_path": "./datasets/xxx.json",
+  "output_dir": "./outputs/xxx",
+  
+  
+  
+  "sampling": {
+    "strategy": "random",
+    "n": 1000,
+    "seed": 42
+  },
+  
+  "enable_thinking": false,
+  
+  "strategy": "progressive",
+  "max_steps": 20,
+  "temperature": 0.2,
+  "top_p": 0.7,
+  
+  "enable_ppl_detection": true,
+  "generation_timeout": 180,
+  "model_max_tokens": 128000,
+  "max_new_tokens": 1024
+}

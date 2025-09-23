@@ -1,3 +1,67 @@
+# SpikeScore-GHD
+### SpikeScore: Generalizable Hallucination Detection — Reproduction Guide
+
+> **Abstract.**  
+> Hallucination detection is critical for deploying large language models (LLMs) in real-world applications. Existing hallucination detection methods achieve strong performance when the training and test data come from the same domain, but they suffer from poor cross-domain generalization. We study an important yet overlooked problem, **generalizable hallucination detection (GHD)**: train on a single domain, then generalize to diverse related domains. We simulate multi-turn dialogues following the model’s initial answer and observe that hallucination-initiated dialogues exhibit **larger uncertainty fluctuations** than factual ones. We propose **SpikeScore**, which quantifies **abrupt local fluctuations** in multi-turn score trajectories. Through theory and experiments, SpikeScore shows **strong cross-domain separability** between hallucinated and non-hallucinated responses and outperforms representative baselines and generalization-oriented methods.
+
+---
+
+## Table of Contents
+- [Overview](#overview)
+- [Hardware & Model Requirements](#hardware--model-requirements)
+- [Setup & Installation](#setup--installation)
+- [Credential Configuration](#credential-configuration)
+- [Step 1 — Generate Multi-turn CoT Continuations](#step-1--generate-multi-turn-cot-continuations)
+- [Step 2 — Compute SpikeScore / SEP](#step-2--compute-spikescore--sep)
+- [Step 3 — Evaluate Separability and AUC](#step-3--evaluate-separability-and-auc)
+- [Optional — Train a Probe (for baselines)](#optional--train-a-probe-for-baselines)
+- [Configuration Reference](#configuration-reference)
+- [Outputs & File Structure](#outputs--file-structure)
+- [Tips & Troubleshooting](#tips--troubleshooting)
+
+---
+
+## Overview
+
+This repository reproduces the experiments for **SpikeScore** under the **GHD** setting.
+
+**Pipeline at a glance**
+1. Run **forward passes** to generate multi-turn continuations (CoT-style) and capture **hidden states**.
+2. Compute metrics:
+   - **SpikeScore** (ours; training-free): measures **maximum second-order change** in stepwise uncertainty scores across turns.
+   - **Baselines** (e.g., **SEP**, **SAPLMA**): probe-based or score-based comparators.
+3. Report **mixture-domain separability** (our primary statistic; see paper/appendix) and **leave-one-out AUC**.
+
+> **Note.** Our primary figure of merit in the paper is **separability on a mixture of test domains** (theoretical lower-bound available). AUCs reported elsewhere use the **leave-one-out** protocol (train on one dataset, test on the remaining datasets separately, then average).
+
+---
+
+## Hardware & Model Requirements
+
+- **GPU:** FP16 support required.
+- **Typical VRAM (approx.):**
+
+| Model Size | VRAM    |
+|------------|---------|
+| 7B / 8B    | ~24 GB  |
+| 13B        | ~48 GB  |
+| 70B        | ~160 GB |
+
+> For 70B, use tensor parallelism and/or CPU offload. Hidden-state capture is memory-intensive.
+
+---
+
+## Setup & Installation
+
+```bash
+# From project root
+pip install -r requirements.txt
+
+
+
+
+
+
 # Electrophoretic-Reasoning
 
 # Electrophoretic Reasoning: Hallucination Detection in Large Language Models via Chain-of-Thought Path Perturbation and Reasoning Instability Analysis — Reproduction Guide

@@ -115,7 +115,7 @@ export WANDB_API_KEY=your-wandb-api-key
 
 ---
 
-## Step 1 — Run multi-turn dialogues Generation
+## Step 1 — Run Multi-Turn Dialogue Generation
 
 Run:
 

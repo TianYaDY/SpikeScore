@@ -37,9 +37,9 @@ To reproduce the experiments:
 
 1. **Forward-pass** prompts/answers through an LLM to collect:
 
-   * Generated **CoT responses**
+   * Generated **Multi-Turn Dialogue responses**
    * **All-layer hidden states**
-2. Compute **reasoning collapse** metrics (SEP or RS) from hidden states.
+2. Compute **Multi-Turn Dialogue collapse** metrics (SEP or RS) from hidden states.
 3. Aggregate results and report **AUC** and **distribution plots**.
 
 > **Recommendation**

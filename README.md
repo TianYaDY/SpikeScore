@@ -123,7 +123,7 @@ Run:
 python ./reasoning_lite.py
 ```
 
-The script reads `config.json` to configure the experiment and generates **CoT chains** plus **hidden states**.
+The script reads `config.json` to configure the experiment and generates **Multi-Turn Dialogue chains** plus **hidden states**.
 
 **Minimal example `config.json`:**
 

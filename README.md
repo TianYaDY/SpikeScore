@@ -21,7 +21,7 @@
 * [Hardware & Model Requirements](#hardware--model-requirements)
 * [Setup & Installation](#setup--installation)
 * [Credential Configuration](#credential-configuration)
-* [Step 1 — Run multi-turn dialogues Generation](#step-1--run-cot-generation)
+* [Step 1 — Run Multi-Turn Dialogue Generation](#step-1--run-multi-turn-dialogue-generation)
 * [Step 2 — Compute SEP/RS Metrics](#step-2--compute-seprs-metrics)
 * [Step 3 — Evaluate AUC](#step-3--evaluate-auc)
 * [Optional — Train a Probe](#optional--train-a-probe)

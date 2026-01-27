@@ -338,3 +338,19 @@ outputs/
 > Use environment variables; never commit secrets.
 
 ---
+
+
+---
+
+## Citation
+
+If you find this repository or our work useful, please consider citing our paper:
+
+```bibtex
+@inproceedings{deng2025spikescore,
+  title     = {Beyond In-Domain Detection: SpikeScore for Cross-Domain Hallucination Detection},
+  author    = {Deng, Yongxin and Fang, Zhen and Li, Yixuan and Chen, Ling},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2026}
+}
+

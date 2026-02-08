@@ -350,7 +350,7 @@ If you find this repository or our work useful, please consider citing our paper
 @inproceedings{
 anonymous2026beyond,
 title={Beyond In-Domain Detection: SpikeScore for Cross-Domain Hallucination Detection},
-author={Anonymous},
+author={Yongxin Deng, Zhen Fang, Sharon Li and Ling Chen},
 booktitle={The Fourteenth International Conference on Learning Representations},
 year={2026},
 url={https://openreview.net/forum?id=Y16qXOaylp}

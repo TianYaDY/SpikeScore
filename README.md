@@ -347,10 +347,12 @@ outputs/
 If you find this repository or our work useful, please consider citing our paper:
 
 ```bibtex
-@inproceedings{deng2025spikescore,
-  title     = {Beyond In-Domain Detection: SpikeScore for Cross-Domain Hallucination Detection},
-  author    = {Deng, Yongxin and Fang, Zhen and Li, Yixuan and Chen, Ling},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  year      = {2026}
+@inproceedings{
+anonymous2026beyond,
+title={Beyond In-Domain Detection: SpikeScore for Cross-Domain Hallucination Detection},
+author={Anonymous},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=Y16qXOaylp}
 }
 

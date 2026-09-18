@@ -1,15 +1,39 @@
-
 # SpikeScore-GHD
+
+> ### Repository Status: Archived
+>
+> This repository is the **reference implementation accompanying the paper** and is
+> provided **as-is**. It is no longer actively maintained: we do not plan further
+> updates, and issues or pull requests may not receive a response.
+>
+> We have received a substantial volume of correspondence regarding this work —
+> collaboration proposals, reproduction questions, and requests for the trained
+> probes — and we have answered as many of them individually as we could. We are
+> no longer able to sustain that, and we apologise to those we could not reach.
+>
+> The code is complete and reproduces the results reported in the paper, but it is
+> research code rather than a packaged tool. In particular, several steps depend on
+> **machine-specific external paths** (model checkpoints, the trained probe `.pkl`,
+> and the `semantic-entropy-probes` working directories), which must be edited by
+> hand before the pipeline will run end to end.
+>
+> **On a possible successor.** We are aware that the current structure makes the
+> method harder to adopt than it should be, and a rewritten implementation — unified
+> configuration, no hard-coded paths, a proper package and CLI — is something we are
+> willing to invest in. Whether we do comes down to whether the demand we see in our
+> inbox is reflected in public interest in the repository itself, since stars are the
+> only signal we can actually measure. If that threshold is met, this repository will
+> be formally deprecated and this README will link to its replacement.
+>
+> Finally, note that the shipped hyperparameters are exploratory defaults intended
+> only to get the pipeline running. **Reproducing the results in the paper requires
+> using the configurations reported there**, not the values in this repository — see
+> [Configuration Reference](#configuration-reference).
+
 ### SpikeScore: Generalizable Hallucination Detection — Reproduction Guide
 
-> **Abstract.**  
-> Hallucination detection is critical for deploying large language models (LLMs) in real-world applications. Existing hallucination detection methods achieve strong performance when the training and test data come from the same domain, but they suffer from poor cross-domain generalization. We study an important yet overlooked problem, **generalizable hallucination detection (GHD)**: train on a single domain, then generalize to diverse related domains. We simulate multi-turn dialogues following the model’s initial answer and observe that hallucination-initiated dialogues exhibit **larger uncertainty fluctuations** than factual ones. We propose **SpikeScore**, which quantifies **abrupt local fluctuations** in multi-turn score trajectories. Through theory and experiments, SpikeScore shows **strong cross-domain separability** between hallucinated and non-hallucinated responses and outperforms representative baselines and generalization-oriented methods.
-
----
-
-# SpikeScore-GHD
-
-# SpikeScore: Generalizable Hallucination Detection — Reproduction Guide
+> **Abstract.**
+> Hallucination detection is critical for deploying large language models (LLMs) in real-world applications. Existing hallucination detection methods achieve strong performance when the training and test data come from the same domain, but they suffer from poor cross-domain generalization. We study an important yet overlooked problem, **generalizable hallucination detection (GHD)**: train on a single domain, then generalize to diverse related domains. We simulate multi-turn dialogues following the model's initial answer and observe that hallucination-initiated dialogues exhibit **larger uncertainty fluctuations** than factual ones. We propose **SpikeScore**, which quantifies **abrupt local fluctuations** in multi-turn score trajectories. Through theory and experiments, SpikeScore shows **strong cross-domain separability** between hallucinated and non-hallucinated responses and outperforms representative baselines and generalization-oriented methods.
 
 > This README explains how to **replicate the experiments** from our paper **Beyond In-Domain Detection: SpikeScore for Cross-Domain Hallucination Detection**. The pipeline simulates **multi-turn dialogues** after an initial model response, records hidden states, computes uncertainty scores (e.g., **SEP**, **SAPLMA**), and aggregates them into SpikeScore for hallucination detection.
 
@@ -285,7 +309,7 @@ Key fields in `config.json`:
 * **`sampling.strategy`** *(str)*: e.g., `random`.
 * **`sampling.n`** *(int)*: Number of items to sample.
 * **`sampling.seed`** *(int)*: RNG seed for reproducibility.
-* **`enable_thinking`** *(bool)*: Enable auxiliary “thinking” mode if supported.
+* **`enable_thinking`** *(bool)*: Enable auxiliary "thinking" mode if supported.
 * **`strategy`** *(str)*: Generation strategy, e.g., `progressive`.
 * **`max_steps`** *(int)*: Max CoT steps (per item).
 * **`temperature`**, **`top_p`**: Decoding parameters.
@@ -293,6 +317,22 @@ Key fields in `config.json`:
 * **`generation_timeout`** *(int, sec)*: Per-item timeout.
 * **`model_max_tokens`** *(int)*: Total context budget.
 * **`max_new_tokens`** *(int)*: Max generation length.
+
+### A note on default values
+
+The values in the example `config.json` above, and in the sample commands in
+Steps 1–3, are **exploratory defaults**. They exist so that the pipeline runs end to
+end on a single GPU and so that new users can inspect the outputs quickly. They are
+**not** the configurations used to produce our results: `layer_range`, `max_steps`,
+`temperature`, `top_p`, and the number of sampled items were all tuned per model and
+per dataset, and the appropriate values differ substantially across settings.
+
+**Any attempt at reproduction must therefore take its hyperparameters from the paper,
+not from this repository.** Running with the shipped defaults will produce numbers
+that are not comparable to the reported ones, and discrepancies obtained this way
+should not be interpreted as a failure to reproduce. Please consult the experimental
+section and appendix for the exact settings corresponding to each model, dataset, and
+scoring function before running anything you intend to report.
 
 ---
 
@@ -339,9 +379,6 @@ outputs/
 
 ---
 
-
----
-
 ## Citation
 
 If you find this repository or our work useful, please consider citing our paper:
@@ -355,4 +392,4 @@ booktitle={The Fourteenth International Conference on Learning Representations},
 year={2026},
 url={https://openreview.net/forum?id=Y16qXOaylp}
 }
-
+```
